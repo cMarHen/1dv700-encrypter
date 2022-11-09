@@ -1,77 +1,42 @@
 package dv700.encrypter.encrypter;
 
 public class CaesarCipher implements Encrypter<Integer> {
-  private char lowerBound;
-  private char upperBound;
-  private int key;
-
-  public CaesarCipher(int key, char upperBound, char lowerBound) {
-    this.key = key;
-    this.lowerBound = lowerBound < '!' ? '!' : lowerBound;
-    this.upperBound = upperBound > '}' ? '}' : upperBound;
-  }
+  public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
 
   @Override
-  public String encrypt(String plainMessage) {
-    char[] arr = plainMessage.toCharArray();
-    String encryptedWord = "";
+  public String encrypt(Integer key, String plainMessage) {
+    plainMessage = plainMessage.toLowerCase();
+    String encryptedMessage = "";
 
-    for (int i = 0; i < arr.length; i++) {
-      char char1= arr[i];  
-      if (char1 == ' ') {
-        encryptedWord += " ";
-      } else {
-        if (char1 + this.key > upperBound) {
-          int increments = this.key;
-          while (increments > 0) {
-            if (char1 == upperBound) {
-              char1 = lowerBound;
-            } else {
-              char1 ++;
-            }
-            increments--;
-          }
-          
-        } else {
-          // BÖRJAR ÄNDRA
-          char1 = (char) (char1 + this.key);  
-        }
-      }
-
-      encryptedWord += char1;
+    for (int i = 0; i < plainMessage.length(); i++) {
+      int pos = ALPHABET.indexOf(plainMessage.charAt(i));
+      int keyValue = (key + pos) % 26;
+      char replaceValue = ALPHABET.charAt(keyValue);
+      encryptedMessage += replaceValue;
     }
 
-    return encryptedWord;
+    return encryptedMessage;
   }
 
   @Override
   public String decrypt(Integer keyToUse, String encodedMessage) {
-    char[] arr = encodedMessage.toCharArray();
+    encodedMessage = encodedMessage.toLowerCase();
     String decryptedWord = "";
 
-    for (int i = 0; i < arr.length; i++) {
-      char char1= arr[i];  
-
-      if (char1 == ' ') {
+    for (int i = 0; i < encodedMessage.length(); i++) {
+      if (encodedMessage.charAt(i) == ' ') {
         decryptedWord += " ";
       } else {
-      if (char1 - keyToUse < lowerBound) {
-        int increments = keyToUse;
-        while (increments > 0) {
-          if (char1 == lowerBound) {
-            char1 = upperBound;
-          } else {
-            char1 --;
-          }
-          increments--;
-        }
-        
-      } else {
-        char1 = (char) (char1 - keyToUse);  
-      }
-    }
+        int pos = ALPHABET.indexOf(encodedMessage.charAt(i)); // Index of the alphabet letter
+        int keyValue = (pos - keyToUse) % ALPHABET.length(); // Modulus of difference of alphabet letter and key
 
-      decryptedWord += char1;
+        if (keyValue < 0) {
+          keyValue = ALPHABET.length() + keyValue;
+        }
+
+        char replaceValue = ALPHABET.charAt(keyValue);
+        decryptedWord += replaceValue;
+      }
     }
 
     return decryptedWord;
