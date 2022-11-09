@@ -26,7 +26,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'dv700.encrypter.App'
+    mainClass = 'dv700.encrypter.app.App'
 }
 
 tasks.named('test') {

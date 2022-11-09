@@ -4,11 +4,10 @@
 package dv700.encrypter;
 
 import org.junit.jupiter.api.Test;
+
+import dv700.encrypter.app.App;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
-    }
 }

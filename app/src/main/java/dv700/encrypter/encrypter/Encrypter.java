@@ -3,8 +3,8 @@ package dv700.encrypter.encrypter;
 /**
  * Encrypter
  */
-public interface Encrypter {
+public interface Encrypter<T> {
 
   public String encrypt(String plainMessage);
-  public String decrypt(String encodedMessage);
+  public String decrypt(T key, String encodedMessage);
 }

@@ -1,6 +1,6 @@
 package dv700.encrypter.encrypter;
 
-public class CaesarCipher implements Encrypter {
+public class CaesarCipher implements Encrypter<Integer> {
   private char lowerBound;
   private char upperBound;
   private int key;
@@ -45,7 +45,7 @@ public class CaesarCipher implements Encrypter {
   }
 
   @Override
-  public String decrypt(String encodedMessage) {
+  public String decrypt(Integer keyToUse, String encodedMessage) {
     char[] arr = encodedMessage.toCharArray();
     String decryptedWord = "";
 
@@ -55,8 +55,8 @@ public class CaesarCipher implements Encrypter {
       if (char1 == ' ') {
         decryptedWord += " ";
       } else {
-      if (char1 - this.key < lowerBound) {
-        int increments = this.key;
+      if (char1 - keyToUse < lowerBound) {
+        int increments = keyToUse;
         while (increments > 0) {
           if (char1 == lowerBound) {
             char1 = upperBound;
@@ -67,7 +67,7 @@ public class CaesarCipher implements Encrypter {
         }
         
       } else {
-        char1 = (char) (char1 - this.key);  
+        char1 = (char) (char1 - keyToUse);  
       }
     }
 
