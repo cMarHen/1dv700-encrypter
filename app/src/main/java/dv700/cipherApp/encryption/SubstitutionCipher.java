@@ -1,4 +1,4 @@
-package dv700.encrypter.encryption;
+package dv700.cipherApp.encryption;
 
 public class SubstitutionCipher implements Encrypter<Integer> {
   public static final String LETTERS = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!.?@"; // Length: 65

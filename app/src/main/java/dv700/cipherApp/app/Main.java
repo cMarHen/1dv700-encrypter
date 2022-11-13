@@ -1,18 +1,18 @@
-package dv700.encrypter.app;
+package dv700.cipherApp.app;
 
 import java.util.ArrayList;
 
-import dv700.encrypter.encryption.Encrypter;
-import dv700.encrypter.encryption.Hasher;
-import dv700.encrypter.encryption.SubstitutionCipher;
-import dv700.encrypter.fileHandler.TextReader;
+import dv700.cipherApp.encryption.Encrypter;
+import dv700.cipherApp.encryption.Hasher;
+import dv700.cipherApp.encryption.SubstitutionCipher;
+import dv700.cipherApp.fileHandler.TextReader;
 
 public class Main {
   String[] arrFromFile;
   Encrypter<Integer> caesarEncrypter;
 
   public Main() {
-    TextReader exampleText = new TextReader("/src/main/java/dv700/encrypter/fileHandler/files/example.txt");
+    TextReader exampleText = new TextReader("/src/main/java/dv700/cipherApp/fileHandler/files/example.txt");
     this.arrFromFile = exampleText.readFromFile().split("\n");
     this.caesarEncrypter = new SubstitutionCipher(); 
   }
