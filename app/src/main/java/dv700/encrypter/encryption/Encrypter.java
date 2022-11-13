@@ -1,4 +1,4 @@
-package dv700.encrypter.encrypter;
+package dv700.encrypter.encryption;
 
 /**
  * Encrypter
