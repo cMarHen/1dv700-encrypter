@@ -11,8 +11,8 @@ public class SubstitutionCipher implements Encrypter<Integer> {
     String encryptedMessage = "";
     for (int i = 0; i < plainMessage.length(); i++) {
       // Keep white spaces non-encrypted
-      if (plainMessage.charAt(i) == ' ') {
-        encryptedMessage += " ";
+      if (LETTERS.indexOf(plainMessage.charAt(i)) == -1) {
+        encryptedMessage += plainMessage.charAt(i);
       } else {
       int pos = LETTERS.indexOf(plainMessage.charAt(i));
       int keyValue = (key + pos) % LETTERS.length();
@@ -29,8 +29,8 @@ public class SubstitutionCipher implements Encrypter<Integer> {
     String decryptedMessage = "";
 
     for (int i = 0; i < encodedMessage.length(); i++) {
-      if (encodedMessage.charAt(i) == ' ') {
-        decryptedMessage += " ";
+      if (LETTERS.indexOf(encodedMessage.charAt(i)) == -1) {
+        decryptedMessage += encodedMessage.charAt(i);
       } else {
         int pos = LETTERS.indexOf(encodedMessage.charAt(i));
         int keyValue = (pos - key) % LETTERS.length();

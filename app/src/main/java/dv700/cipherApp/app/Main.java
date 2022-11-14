@@ -7,6 +7,7 @@ import dv700.cipherApp.decryption.SubstitutionDecrypter;
 import dv700.cipherApp.encryption.Encrypter;
 import dv700.cipherApp.encryption.Hasher;
 import dv700.cipherApp.encryption.SubstitutionCipher;
+import dv700.cipherApp.encryption.TranspositionCipher;
 import dv700.cipherApp.filehandling.TextReader;
 import dv700.cipherApp.ui.Console;
 
@@ -28,7 +29,21 @@ public class Main {
 
 
   public void run() {
-    Boolean isRunning = true;
+    TranspositionCipher cipher = new TranspositionCipher();
+    String str = cipher.encrypt(20, "Martin");
+    System.out.println(str);
+    System.out.println(cipher.decrypt(20, str));
+    /* try {
+      TextReader fileHandler = new TextReader("/src/main/java/dv700/cipherApp/filehandling/files/mh225wd.txt");
+      String textToEncrypt = fileHandler.readFromFile();
+      String encryptedText = substitutionEncrypter.encrypt(42, textToEncrypt);
+      fileHandler.writeToFile(encryptedText);
+    } catch (Exception e) {
+      System.out.println(e);
+    } */
+
+    
+    /* Boolean isRunning = true;
     do {
       MenuEvent event = ui.getMainMenuChoice();
 
@@ -44,49 +59,7 @@ public class Main {
       if (event == MenuEvent.QUIT) {
         isRunning = false;
       }
-    } while (isRunning);
-
-    /* SubstitutionDecrypter decipher = new SubstitutionDecrypter();
-    ArrayList<String> listOfSentences = decipher.getSentences("XEM CKSX MEET MEKBT Q MEET SXKSA SXKSA YV Q MEET SXKSA SEKBT SXKSA MEET");
-    for (String sentence : listOfSentences) {
-
-      if (isContainingValidWord(sentence)) {
-        System.out.println(sentence);
-      }
-    } */
-
-    // Run hasher
-    /* Hasher hasher = new Hasher(256);
-
-    String str = "a";
-    for (int i = 0; i < 10; i++) {
-      System.out.println("Hash: " + hasher.hash(str));
-      str += "b";
-    } */
-
-    // String cipher = caesarEncrypter.encrypt(26, "hej Martin, jag heter martin och har ett efternamn som är ganska långt!");
-    /* String cipher = caesarEncrypter.encrypt(4, "hello you pig!!");
-    String plain = caesarEncrypter.decrypt(69, cipher);
-
-    System.out.println(cipher);
-    System.out.println(plain); */
-
-
-
-    // Demonstrate encryption and decryption using a shift key.
-    // String zebre = caesarEncrypter.encrypt(3, "zebra"); // => "cheud"
-    // System.out.println(caesarEncrypter.decrypt(3, zebre)); // => "zebra"
-
-    // Trying to descipher below encrypted text.
-    // Will print every line that has a "valid word", to be verified manually.
-    /* String message = "XEM CKSX MEET MEKBT Q MEET SXKSA SXKSA YV Q MEET SXKSA SEKBT SXKSA MEET".toLowerCase();
-    ArrayList<String> caesarString = getDecipheredMessage(26, message, caesarEncrypter);
-
-    for (String s : caesarString) {
-      if (isContainingValidWord(s)) {
-        System.out.println(s);
-      }
-    } */
+    } while (isRunning); */
 
     scan.close();
   }
