@@ -61,6 +61,28 @@ public class Console {
     }
   }
 
+  public MenuEvent getTranspositionMenuChoice() {
+    int choice = -1;
+    System.out.println("-----------------------------");
+    System.out.println("-- Substitution encryption --");
+    System.out.println("-----------------------------");
+    System.out.println("1. Encrypt");
+    System.out.println("2. Decrypt");
+    System.out.println("0. Go back");
+
+    do {
+      choice = promptForInt("Enter a choice: ");
+    } while (choice > 2 || choice < 0);
+
+    if (choice == 1) {
+      return MenuEvent.ENCRYPT_TRAN;
+    } else if (choice == 2) {
+      return MenuEvent.DECRYPT_TRAN;
+    } else {
+      return MenuEvent.QUIT;
+    }
+  }
+
   public int promptForInt(String question) {
     int input = -1;
     boolean validInput;
@@ -96,5 +118,4 @@ public class Console {
 
     return input;
   }
-
 }

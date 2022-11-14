@@ -14,6 +14,7 @@ import dv700.cipherApp.ui.Console;
 public class Main {
   private String[] arrFromFile;
   private Encrypter<Integer> substitutionEncrypter;
+  private Encrypter<Integer> transpositionEncrypter;
   private Hasher hasher;
   private Console ui;
   private Scanner scan;
@@ -22,6 +23,7 @@ public class Main {
     TextReader exampleText = new TextReader("/src/main/java/dv700/cipherApp/filehandling/files/example.txt");
     this.arrFromFile = exampleText.readFromFile().split("\n");
     this.substitutionEncrypter = new SubstitutionCipher(); 
+    this.transpositionEncrypter = new TranspositionCipher();
     this.hasher = new Hasher(256);
     this.scan = new Scanner(System.in, "UTF8");
     this.ui = new Console(scan);
@@ -29,10 +31,6 @@ public class Main {
 
 
   public void run() {
-    TranspositionCipher cipher = new TranspositionCipher();
-    String str = cipher.encrypt(20, "Martin");
-    System.out.println(str);
-    System.out.println(cipher.decrypt(20, str));
     /* try {
       TextReader fileHandler = new TextReader("/src/main/java/dv700/cipherApp/filehandling/files/mh225wd.txt");
       String textToEncrypt = fileHandler.readFromFile();
@@ -43,12 +41,12 @@ public class Main {
     } */
 
     
-    /* Boolean isRunning = true;
+    Boolean isRunning = true;
     do {
       MenuEvent event = ui.getMainMenuChoice();
 
       if (event == MenuEvent.TRANSPOSITION) {
-        System.out.println("Trans..");
+        doTranspositionMenu();
       }
       if (event == MenuEvent.SUBSTITUTION) {
         doSubstitutionMenu();
@@ -59,7 +57,7 @@ public class Main {
       if (event == MenuEvent.QUIT) {
         isRunning = false;
       }
-    } while (isRunning); */
+    } while (isRunning);
 
     scan.close();
   }
@@ -91,7 +89,29 @@ public class Main {
   }
 
   private void doTranspositionMenu() {
+    Boolean isRunning = true;
+    do {
+      MenuEvent event = ui.getTranspositionMenuChoice();
 
+      if (event == MenuEvent.ENCRYPT_TRAN) {
+        String plainMessage = ui.promptForString("Enter message to encrypt: ");
+        int key = ui.promptForInt("Enter a encryption key (number): ");
+        System.out.println(key);
+
+        String encryptedMessage = transpositionEncrypter.encrypt(key, plainMessage);
+        System.out.println(encryptedMessage);
+      }
+      if (event == MenuEvent.DECRYPT_TRAN) {
+        String cipherText = ui.promptForString("Enter message to decrypt: ");
+        int key = ui.promptForInt("Enter a encryption key (number): ");
+
+        String decryptedMessage = transpositionEncrypter.decrypt(key, cipherText);
+        System.out.println(decryptedMessage);
+      }
+      if (event == MenuEvent.QUIT) {
+        isRunning = false;
+      }
+    } while (isRunning);
   }
 
   private void doHashMenu() {

@@ -35,16 +35,16 @@ public class TranspositionCipher implements Encrypter<Integer> {
     for (int i = key * encodedMessage.length(); i >= 0; i--) {
       char container = list.get(encodedMessage.length() - 1);
       list.remove(encodedMessage.length() - 1);
+      
       list.add(i % encodedMessage.length(), container);
     }
 
-    String encrypted = "";
+    String encryptedText = "";
     for (Character c : list) {
-      encrypted += c;
+      encryptedText += c;
     }
 
-    
-    return encrypted;
+    return encryptedText;
   }
   
 }
