@@ -1,4 +1,4 @@
-package dv700.cipherApp.fileHandler;
+package dv700.cipherApp.filehandling;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
