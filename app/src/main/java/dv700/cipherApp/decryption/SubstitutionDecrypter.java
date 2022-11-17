@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SubstitutionDecrypter {
-  public String letters = "abcdefghijklmnopqrstuvwxyz";
+  public String letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
   private LetterCollection collection;
   HashMap<Character, Character> map;
 
