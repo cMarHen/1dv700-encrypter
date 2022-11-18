@@ -1,7 +1,5 @@
 package dv700.cipherApp.encryption;
 
-import java.util.Hashtable;
-
 public class Hasher {
   private int bitSize;
 

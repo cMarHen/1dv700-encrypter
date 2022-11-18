@@ -1,0 +1,49 @@
+This crypto analysis is done with pen and paper, just guessing the letters.
+
+The cipher line: 
+
+plain   a b c d e f g h i j k l m n o p q r s t u v w x y z
+________________________________________________________________________________
+cipher  y e l o w a b c d f g h i j k m n p q r s t u v x z
+
+Encrypted:
+
+***************************************************************************************************
+*                                                                                                 *
+*                                Secret message - Top Secret                                      *
+*                                                                                                 *
+*                      May only be read by security passed personnel                              *
+*                                                                                                 *
+***************************************************************************************************
+
+    Cwhhk! Rcdq dq y iwqqybw yeksr jkrcdjb yr yhh. 
+    D'i fsqr rwqrdjb rcyr rcw wjlpxmrdkj iwrcko ukpgq yq dr qcksho. Rcdq dq y jwu qwjrwjlw. 
+    Rcdq dq yjkrcwp jwu qwjrwjlw. Asprcwpikpw, D ukjowp da dr dq mkqqdehw rk owlpxmr 
+    rcdq iwqqybw udrcksr rcw pdbcr gwx. Qdjlw wylc lcypylrwp iyx cytw sm rk 256 mkqqdehw tyhswq, 
+    D ewhdwtw rcyr dr dq nsdrw odaadlshr rk lpylg rcw wjlpxmrdkj. 
+    Lyj xks pwyo rcdq iwqqybw? Lkjbpyrshyrdkjq, xks aksjo rcw pdbcr gwx!
+    
+    Hdjoy Iwxwp
+
+***************************************************************************************************
+
+Decrypted:
+
+***************************************************************************************************
+*                                                                                                 *
+*                                Secret message - Top Secret                                      *
+*                                                                                                 *
+*                      May only be read by security passed personnel                              *
+*                                                                                                 *
+***************************************************************************************************
+
+    Hello! this is a message about nothing at all. 
+    I'm just testing that the encryption method morGs as it should. this is a new sentence. 
+    this is another new sentence. furthermore, i wonder if it is possible to decrypt 
+    this message without the right Gey. Since each character may have up to 256 possible values,
+    I believe that it is quite difficult to crack the encryption.
+    Can you read this message? Congratulations, you found the right key!
+
+    Linda Meyer
+
+***************************************************************************************************

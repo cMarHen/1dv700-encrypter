@@ -1,15 +1,7 @@
 package dv700.cipherApp.app;
 
-import java.text.FieldPosition;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Scanner;
-
-import javax.management.loading.PrivateClassLoader;
-
-import dv700.cipherApp.decryption.SubstitutionDecrypter;
 import dv700.cipherApp.encryption.Encrypter;
 import dv700.cipherApp.encryption.Hasher;
 import dv700.cipherApp.encryption.SubstitutionCipher;
@@ -18,19 +10,12 @@ import dv700.cipherApp.filehandling.TextReader;
 import dv700.cipherApp.ui.Console;
 
 public class Main {
-  private String[] arrFromFile;
-  private Encrypter<Integer> substitutionEncrypter;
-  private Encrypter<Integer> transpositionEncrypter;
   private Hasher hasher;
   private Console ui;
   private Scanner scan;
   private int bitSize = 256;
   
   public Main() {
-    TextReader exampleText = new TextReader("/src/main/java/dv700/cipherApp/filehandling/files/example.txt");
-    this.arrFromFile = exampleText.readFromFile().split("\n");
-    this.substitutionEncrypter = new SubstitutionCipher(); 
-    this.transpositionEncrypter = new TranspositionCipher();
     this.hasher = new Hasher(bitSize);
     this.scan = new Scanner(System.in, "UTF8");
     this.ui = new Console(scan);
@@ -158,26 +143,6 @@ public class Main {
     String plainMessage = ui.promptForString("Enter a message to hash: ");
     String hashedMessage = hasher.hash(plainMessage);
     System.out.println("Hash signature: " + hashedMessage);
-  }
-
-  private boolean isContainingValidWord(String sentence) {
-    String[] s = sentence.split(" ");
-    for (String w : s) {
-      if (isValidWord(w)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  private boolean isValidWord(String word) {
-    for (String s : arrFromFile) {
-      if (s.equals(word)) {
-        System.out.println(word);
-        return true;
-      }
-    }
-    return false;
   }
 
   public static enum MenuEvent {
